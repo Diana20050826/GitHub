@@ -1,0 +1,673 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diana Martins | Personal Presentation</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+:root {
+  --bg: #101010;
+  --panel: #191919;
+  --orange: #ff7138;
+  --white: #f5f2ed;
+  --muted: #99958f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  background: var(--orange);
+  filter: blur(180px);
+  opacity: .10;
+  right: -250px;
+  top: -200px;
+  pointer-events: none;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 76px;
+  padding: 0 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  border-bottom: 1px solid #ffffff12;
+  background: #101010d9;
+  backdrop-filter: blur(15px);
+}
+
+.logo {
+  font-weight: 800;
+  letter-spacing: 3px;
+  font-size: 17px;
+}
+
+.logo span { color: var(--orange); }
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.status {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+  display: inline-block;
+  margin-right: 8px;
+  box-shadow: 0 0 12px var(--orange);
+}
+
+main {
+  height: 100vh;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  padding: 120px 12% 115px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(45px);
+  transition: .65s ease;
+  overflow-y: auto;
+}
+
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.eyebrow {
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: clamp(55px, 9vw, 110px);
+  line-height: .95;
+  letter-spacing: -6px;
+  font-weight: 800;
+}
+
+h1 span {
+  color: var(--orange);
+}
+
+h2 {
+  font-size: clamp(37px, 5vw, 65px);
+  letter-spacing: -3px;
+  line-height: 1.05;
+  margin-bottom: 25px;
+}
+
+h2 span { color: var(--orange); }
+
+.description {
+  color: var(--muted);
+  max-width: 610px;
+  line-height: 1.9;
+  font-size: 15px;
+  margin-top: 28px;
+}
+
+.hero-line {
+  width: 65px;
+  height: 3px;
+  background: var(--orange);
+  margin-top: 35px;
+}
+
+.hero-bottom {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-top: 45px;
+}
+
+.hero-bottom::before {
+  content: "";
+  width: 35px;
+  height: 1px;
+  background: var(--orange);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  max-width: 850px;
+  margin-top: 25px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid #ffffff0d;
+  padding: 24px;
+  border-radius: 13px;
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #ff71385c;
+  background: #202020;
+}
+
+.card-number {
+  color: var(--orange);
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 17px;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.quote {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(27px, 4vw, 43px);
+  line-height: 1.4;
+  max-width: 750px;
+}
+
+.quote span { color: var(--orange); }
+
+.timeline {
+  margin-top: 30px;
+  border-left: 1px solid #ff71385c;
+  padding-left: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+
+.timeline-item {
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: var(--orange);
+  border-radius: 50%;
+  left: -30px;
+  top: 5px;
+}
+
+.timeline-item small {
+  color: var(--orange);
+  letter-spacing: 2px;
+  font-size: 10px;
+}
+
+.timeline-item h3 {
+  margin: 6px 0;
+  font-size: 17px;
+}
+
+.timeline-item p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+  max-width: 650px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.tag {
+  padding: 12px 17px;
+  background: #1c1c1c;
+  border: 1px solid #ffffff12;
+  border-radius: 30px;
+  color: #d0ccc5;
+  font-size: 12px;
+  transition: .3s;
+}
+
+.tag:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.project {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.project-icon {
+  min-width: 43px;
+  height: 43px;
+  background: #ff713817;
+  border: 1px solid #ff71383c;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  color: var(--orange);
+  font-size: 18px;
+}
+
+.future-box {
+  border: 1px solid #ff71384d;
+  background: linear-gradient(120deg,#ff713813,#191919);
+  padding: 35px;
+  border-radius: 17px;
+  max-width: 750px;
+  margin-top: 20px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  padding: 0 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  border-top: 1px solid #ffffff12;
+  background: #101010eF;
+}
+
+.counter {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+.counter strong { color: var(--orange); }
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  border: 1px solid #ffffff2a;
+  background: transparent;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  transition: .3s;
+}
+
+button:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #111;
+}
+
+.progress {
+  position: fixed;
+  bottom: 75px;
+  left: 0;
+  height: 2px;
+  background: var(--orange);
+  width: 12.5%;
+  transition: width .5s;
+  z-index: 20;
+}
+
+@media(max-width:650px) {
+  header { padding: 0 6%; height: 65px; }
+  .header-right { font-size: 9px; gap: 5px; }
+  .slide { padding: 100px 7% 105px; }
+  h1 { font-size: 65px; letter-spacing: -4px; }
+  h2 { font-size: 42px; }
+  .grid { grid-template-columns: 1fr; gap: 10px; }
+  .card { padding: 17px; }
+  .description { font-size: 13px; }
+  footer { padding: 0 6%; height: 65px; }
+  .progress { bottom: 65px; }
+  button { padding: 10px 13px; }
+  .slide { justify-content: flex-start; padding-top: 110px; }
+  .slide:first-child { justify-content: center; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">D<span>.</span>M</div>
+  <div class="header-right">
+    <span><i class="status"></i> PERSONAL PRESENTATION</span>
+    <span>2026</span>
+  </div>
+</header>
+
+<main>
+
+<!-- 01 -->
+<section class="slide active">
+  <div class="eyebrow">01 / Apresentação pessoal</div>
+  <h1>DIANA<br><span>MARTINS.</span></h1>
+  <p class="description">
+    Criatividade, tecnologia e vontade de fazer acontecer.
+    Uma apresentação sobre quem sou, aquilo que gosto de fazer
+    e tudo aquilo que ainda quero conquistar.
+  </p>
+  <div class="hero-line"></div>
+  <div class="hero-bottom">PORTUGAL · A MINHA HISTÓRIA</div>
+</section>
+
+<!-- 02 -->
+<section class="slide">
+  <div class="eyebrow">02 / Quem sou eu</div>
+  <h2>Muito mais do que<br>uma <span>apresentação.</span></h2>
+  <p class="description">
+    Sou a Diana, uma pessoa criativa, curiosa e com vontade de
+    aprender coisas novas. Gosto de transformar ideias em projetos
+    reais, experimentar, descobrir ferramentas e encontrar formas
+    diferentes de fazer as coisas.
+    <br><br>
+    Não gosto de ficar apenas pela ideia. Gosto de experimentar,
+    construir, melhorar e ver o resultado final.
+  </p>
+</section>
+
+<!-- 03 -->
+<section class="slide">
+  <div class="eyebrow">03 / A minha personalidade</div>
+  <h2>Como me <span>descrevo.</span></h2>
+  <div class="grid">
+    <div class="card">
+      <div class="card-number">01 — CRIATIVIDADE</div>
+      <h3>Tenho ideias</h3>
+      <p>Gosto de criar projetos diferentes, pensar em designs e dar identidade às minhas ideias.</p>
+    </div>
+    <div class="card">
+      <div class="card-number">02 — CURIOSIDADE</div>
+      <h3>Quero descobrir</h3>
+      <p>Tenho interesse em aprender ferramentas, tecnologias e experimentar coisas novas.</p>
+    </div>
+    <div class="card">
+      <div class="card-number">03 — DETERMINAÇÃO</div>
+      <h3>Não desisto facilmente</h3>
+      <p>Quando algo não funciona, procuro perceber o problema e encontrar uma solução.</p>
+    </div>
+    <div class="card">
+      <div class="card-number">04 — EVOLUÇÃO</div>
+      <h3>Quero melhorar</h3>
+      <p>Valorizo a aprendizagem e acredito que cada experiência pode ensinar alguma coisa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section class="slide">
+  <div class="eyebrow">04 / Formação</div>
+  <h2>O meu percurso<br><span>académico.</span></h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <small>ENSINO SECUNDÁRIO</small>
+      <h3>Curso Profissional de Comunicação</h3>
+      <p>Técnico de Comunicação — Marketing, Relações Públicas e Publicidade, na Escola Serafim Leite.</p>
+    </div>
+    <div class="timeline-item">
+      <small>FORMAÇÃO PROFISSIONAL · 2026</small>
+      <h3>Tecnologias e Programação</h3>
+      <p>Técnico/a Especialista em Tecnologias e Programação de Sistemas de Informação.</p>
+    </div>
+    <div class="timeline-item">
+      <small>O MEU OBJETIVO</small>
+      <h3>Continuar a aprender</h3>
+      <p>Desenvolver competências na programação, bases de dados, sistemas de informação e tecnologia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="slide">
+  <div class="eyebrow">05 / Experiência</div>
+  <h2>Aprender também<br>é <span>fazer.</span></h2>
+  <div class="grid">
+    <div class="card">
+      <div class="card-number">EXPERIÊNCIA 01</div>
+      <h3>Comércio e atendimento</h3>
+      <p>Experiência profissional na Zippy, com contacto com clientes, organização e trabalho em equipa.</p>
+    </div>
+    <div class="card">
+      <div class="card-number">EXPERIÊNCIA 02</div>
+      <h3>Marketing e comunicação</h3>
+      <p>Estágio na Friparque, com criação de cartazes, fotografias de produtos, conteúdos digitais e trabalho para o website.</p>
+    </div>
+    <div class="card">
+      <div class="card-number">EXPERIÊNCIA 03</div>
+      <h3>Atividades com crianças</h3>
+      <p>Experiência como monitora em atividades de férias, com participação e acompanhamento de crianças.</p>
+    </div>
+    <div class="card">
+      <div class="card-number">O QUE APRENDI</div>
+      <h3>Competências pessoais</h3>
+      <p>Responsabilidade, comunicação, organização, criatividade e adaptação a diferentes tarefas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 -->
+<section class="slide">
+  <div class="eyebrow">06 / Interesses</div>
+  <h2>O que me <span>inspira.</span></h2>
+  <p class="description">
+    Tenho vários interesses e gosto de explorar áreas diferentes.
+    Algumas das coisas que mais despertam a minha curiosidade são:
+  </p>
+  <div class="tags">
+    <span class="tag">✦ Tecnologia</span>
+    <span class="tag">✦ Programação</span>
+    <span class="tag">✦ Design digital</span>
+    <span class="tag">✦ Marketing</span>
+    <span class="tag">✦ Criação de websites</span>
+    <span class="tag">✦ Jogos digitais</span>
+    <span class="tag">✦ Inteligência artificial</span>
+    <span class="tag">✦ Animais</span>
+    <span class="tag">✦ Fotografia</span>
+    <span class="tag">✦ Projetos criativos</span>
+  </div>
+</section>
+
+<!-- 07 -->
+<section class="slide">
+  <div class="eyebrow">07 / Os meus projetos</div>
+  <h2>Ideias que ganham<br><span>vida.</span></h2>
+  <div class="grid">
+    <div class="card project">
+      <div class="project-icon">⌘</div>
+      <div>
+        <h3>DIDICALO</h3>
+        <p>Uma aplicação privada com funcionalidades partilhadas, organização, agenda e jogos.</p>
+      </div>
+    </div>
+    <div class="card project">
+      <div class="project-icon">✧</div>
+      <div>
+        <h3>DOLL WORLD</h3>
+        <p>Um jogo digital de beleza e personalização, com bonecas, maquilhagem e moda.</p>
+      </div>
+    </div>
+    <div class="card project">
+      <div class="project-icon">◈</div>
+      <div>
+        <h3>OUTFIT BRAIN</h3>
+        <p>Uma ideia de armário digital para organizar roupa e criar combinações de looks.</p>
+      </div>
+    </div>
+    <div class="card project">
+      <div class="project-icon">♡</div>
+      <div>
+        <h3>ELVIS & TOBIAS</h3>
+        <p>Um projeto digital dedicado aos meus gatos, com identidade visual e conteúdos próprios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 -->
+<section class="slide">
+  <div class="eyebrow">08 / O futuro</div>
+  <h2>Ainda tenho<br>muito para <span>criar.</span></h2>
+  <div class="future-box">
+    <p class="quote">
+      "Não quero apenas aprender a utilizar a tecnologia.
+      Quero aprender a <span>criar com ela.</span>"
+    </p>
+    <p class="description">
+      Quero continuar a desenvolver as minhas capacidades,
+      ganhar experiência, criar projetos próprios e descobrir
+      até onde posso chegar nas áreas da tecnologia e da criatividade.
+    </p>
+  </div>
+  <div class="hero-bottom">O MELHOR AINDA ESTÁ POR CONSTRUIR.</div>
+</section>
+
+<!-- 09 -->
+<section class="slide">
+  <div class="eyebrow">09 / Obrigada</div>
+  <h1>ESTE É O<br>MEU <span>INÍCIO.</span></h1>
+  <p class="description">
+    Cada experiência, cada ideia e cada projeto fazem parte
+    da pessoa que sou e da profissional que quero vir a ser.
+    <br><br>
+    Obrigada pela atenção!
+  </p>
+  <div class="hero-line"></div>
+  <div class="hero-bottom">DIANA MARTINS · 2026</div>
+</section>
+
+</main>
+
+<div class="progress" id="progress"></div>
+
+<footer>
+  <div class="counter">
+    <strong id="current">01</strong> / 09
+  </div>
+  <div class="controls">
+    <button onclick="previousSlide()">← ANTERIOR</button>
+    <button onclick="nextSlide()">SEGUINTE →</button>
+  </div>
+</footer>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const current = document.getElementById('current');
+const progress = document.getElementById('progress');
+
+let index = 0;
+
+function showSlide(number) {
+  slides[index].classList.remove('active');
+
+  index = (number + slides.length) % slides.length;
+
+  slides[index].classList.add('active');
+
+  current.textContent = String(index + 1).padStart(2, '0');
+
+  progress.style.width =
+    ((index + 1) / slides.length * 100) + '%';
+}
+
+function nextSlide() {
+  showSlide(index + 1);
+}
+
+function previousSlide() {
+  showSlide(index - 1);
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowRight' || event.key === ' ') {
+    nextSlide();
+  }
+
+  if (event.key === 'ArrowLeft') {
+    previousSlide();
+  }
+});
+
+// Navegação por deslize no telemóvel
+let touchStart = 0;
+
+document.addEventListener('touchstart', (event) => {
+  touchStart = event.changedTouches[0].screenX;
+}, {passive: true});
+
+document.addEventListener('touchend', (event) => {
+  const touchEnd = event.changedTouches[0].screenX;
+  const distance = touchEnd - touchStart;
+
+  if (Math.abs(distance) > 70) {
+    if (distance < 0) nextSlide();
+    else previousSlide();
+  }
+}, {passive: true});
+
+showSlide(0);
+</script>
+
+</body>
+</html>
